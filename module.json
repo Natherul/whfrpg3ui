@@ -2,7 +2,7 @@
   "id": "wfrp3e-player-hud",
   "title": "WFRP3e Player HUD",
   "description": "A heads-up display for players and GMs to manage WFRP3e characters easily (HP, Stance, Stress, Exhaustion).",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "compatibility": {
     "minimum": "11",
     "verified": "14"
@@ -37,5 +37,5 @@
   ],
   "url": "",
   "manifest": "https://github.com/Natherul/whfrpg3ui/releases/latest/download/module.json",
-  "download": "https://github.com/Natherul/whfrpg3ui/releases/download/v1.0.12/module.zip"
+  "download": "https://github.com/Natherul/whfrpg3ui/releases/download/v1.0.13/module.zip"
 }
