@@ -14,6 +14,7 @@ class WFRP3eHUD extends Application {
       height: "auto",
       resizable: true,
       minimizable: true,
+      closable: false,
       classes: ["wfrp3e-hud-app"]
     });
   }
