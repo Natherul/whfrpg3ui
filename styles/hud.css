@@ -117,23 +117,33 @@
   padding: 20px;
 }
 
-.stance-controls {
+#wfrp3e-player-hud .stance-controls {
+  display: flex !important;
   flex-wrap: nowrap !important;
-  justify-content: flex-end;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 4px !important;
 }
 
-.stance-btn {
-  font-size: 11px;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 3px;
-  text-transform: uppercase;
-  color: white;
-  border: 1px solid rgba(0,0,0,0.5);
-  cursor: pointer;
-  flex: 0 0 auto !important;
-  width: auto !important;
-  min-width: 45px;
+#wfrp3e-player-hud .stance-btn {
+  font-size: 11px !important;
+  font-weight: bold !important;
+  border-radius: 3px !important;
+  text-transform: uppercase !important;
+  color: white !important;
+  border: 1px solid rgba(0,0,0,0.5) !important;
+  cursor: pointer !important;
+  flex: 0 0 45px !important;
+  width: 45px !important;
+  min-width: 45px !important;
+  max-width: 45px !important;
+  height: 22px !important;
+  line-height: 20px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .stance-btn.cons-btn {
