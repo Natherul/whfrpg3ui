@@ -13,7 +13,7 @@
             <label>HP:</label>
             <div class="stat-controls">
               <button class="stat-btn minus" data-stat="system.wounds.value" data-action="decrease"><i class="fas fa-minus"></i></button>
-              <input type="number" class="stat-input hp-input" data-stat="system.wounds.value" value="{{this.system.wounds.value}}" min="0" max="{{this.system.wounds.max}}" />
+              <input type="number" class="stat-input hp-input" style="width: 60px !important; min-width: 60px !important; flex: 0 0 60px !important;" data-stat="system.wounds.value" value="{{this.system.wounds.value}}" min="0" max="{{this.system.wounds.max}}" />
               <button class="stat-btn plus" data-stat="system.wounds.value" data-action="increase"><i class="fas fa-plus"></i></button>
             </div>
             <span> / {{this.system.wounds.max}}</span>
@@ -66,7 +66,7 @@
           <label>HP:</label>
           <div class="stat-controls">
             <button class="stat-btn minus" data-stat="system.wounds.value" data-action="decrease"><i class="fas fa-minus"></i></button>
-            <input type="number" class="stat-input hp-input" data-stat="system.wounds.value" value="{{character.system.wounds.value}}" min="0" max="{{character.system.wounds.max}}" />
+            <input type="number" class="stat-input hp-input" style="width: 60px !important; min-width: 60px !important; flex: 0 0 60px !important;" data-stat="system.wounds.value" value="{{character.system.wounds.value}}" min="0" max="{{character.system.wounds.max}}" />
             <button class="stat-btn plus" data-stat="system.wounds.value" data-action="increase"><i class="fas fa-plus"></i></button>
           </div>
           <span> / {{character.system.wounds.max}}</span>
