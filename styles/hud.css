@@ -83,6 +83,7 @@
 .stat-controls {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .stat-btn {
@@ -101,7 +102,7 @@
   box-shadow: 0 0 5px #7a5c3f;
 }
 
-.stat-input {
+#wfrp3e-player-hud .stat-input {
   width: 40px !important;
   min-width: 40px !important;
   flex: 0 0 40px !important;
@@ -113,10 +114,21 @@
   height: 24px !important;
 }
 
-.hp-input {
-  width: 50px !important;
-  min-width: 50px !important;
-  flex: 0 0 50px !important;
+#wfrp3e-player-hud .hp-input {
+  width: 60px !important;
+  min-width: 60px !important;
+  flex: 0 0 60px !important;
+}
+
+/* Hide native number spinners since we have custom +/- buttons */
+.stat-input::-webkit-outer-spin-button,
+.stat-input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+.stat-input[type=number] {
+  -moz-appearance: textfield !important;
 }
 
 .no-character {
