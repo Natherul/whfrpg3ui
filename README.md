@@ -2,6 +2,9 @@
 
 A Foundry VTT module designed for the Warhammer Fantasy Roleplay 3rd Edition (wfrp3e) system. It provides a highly accessible Heads-Up Display (HUD) for both players and game masters.
 
+## Screenshot
+![WFRP3e Player HUD Screenshot](assets/screenshot.png)
+
 ## Features
 - **Player HUD:** Automatically pops up for players, giving them immediate access to their HP (Wounds), Stance, Stress, Fatigue, and Fortune without opening their character sheet.
 - **Party HUD (GM):** Displays a compact grid of all player characters, allowing the Game Master to track and modify everyone's stats instantly.
