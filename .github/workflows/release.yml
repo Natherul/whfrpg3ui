@@ -40,7 +40,7 @@ jobs:
           
           # Update download and manifest URLs to point to this new release
           REPO="${{ github.repository }}"
-          MANIFEST_URL="https://github.com/$REPO/releases/download/v$NEW_VERSION/module.json"
+          MANIFEST_URL="https://github.com/$REPO/releases/latest/download/module.json"
           DOWNLOAD_URL="https://github.com/$REPO/releases/download/v$NEW_VERSION/module.zip"
           
           jq ".manifest = \"$MANIFEST_URL\" | .download = \"$DOWNLOAD_URL\"" module.json > tmp.json && mv tmp.json module.json
