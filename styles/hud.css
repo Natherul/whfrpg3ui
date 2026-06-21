@@ -135,3 +135,26 @@
   background-color: #9d0208; /* Red */
   margin-left: 4px;
 }
+
+#wfrp3e-player-hud .header-button.close {
+  display: none !important;
+}
+
+.add-xp-btn {
+  display: block;
+  margin: 0 auto 10px auto;
+  width: auto;
+  padding: 4px 12px;
+  background-color: #2d6a4f;
+  color: white;
+  border: 1px solid #1b4332;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Signika", sans-serif;
+  font-weight: bold;
+}
+
+.add-xp-btn:hover {
+  background-color: #40916c;
+  box-shadow: 0 0 5px #40916c;
+}

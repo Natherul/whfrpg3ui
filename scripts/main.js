@@ -55,6 +55,21 @@ class WFRP3eHUD extends Application {
   activateListeners(html) {
     super.activateListeners(html);
 
+    // Handle Add XP button
+    html.find('.add-xp-btn').click(async (event) => {
+      event.preventDefault();
+      if (!game.user.isGM) return;
+
+      const characters = game.actors.filter(a => a.hasPlayerOwner && a.type === "character");
+      let count = 0;
+      for (const actor of characters) {
+        let currentTotal = foundry.utils.getProperty(actor, "system.experience.total") || 0;
+        await actor.update({ "system.experience.total": currentTotal + 1 });
+        count++;
+      }
+      ui.notifications.info(`Added 1 XP to ${count} characters.`);
+    });
+
     // Handle plus/minus buttons
     html.find('.stat-btn').click(async (event) => {
       event.preventDefault();
