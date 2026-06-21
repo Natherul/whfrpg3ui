@@ -1,0 +1,114 @@
+<div class="wfrp3e-hud-container">
+  {{#if isGM}}
+    <div class="wfrp3e-hud-header">
+      <h2>Party HUD</h2>
+    </div>
+    <div class="wfrp3e-hud-grid">
+      {{#each characters}}
+        <div class="wfrp3e-hud-character" data-actor-id="{{this.id}}">
+          <div class="character-name">{{this.name}}</div>
+          
+          <div class="stat-row">
+            <label>HP:</label>
+            <div class="stat-controls">
+              <button class="stat-btn minus" data-stat="system.wounds.value" data-action="decrease"><i class="fas fa-minus"></i></button>
+              <input type="number" class="stat-input" data-stat="system.wounds.value" value="{{this.system.wounds.value}}" min="0" max="{{this.system.wounds.max}}" />
+              <button class="stat-btn plus" data-stat="system.wounds.value" data-action="increase"><i class="fas fa-plus"></i></button>
+            </div>
+            <span> / {{this.system.wounds.max}}</span>
+          </div>
+
+          <div class="stat-row">
+            <label>Stance:</label>
+            <div class="stat-controls">
+              <button class="stat-btn minus" data-stat="system.stance.current" data-action="decrease"><i class="fas fa-minus"></i></button>
+              <input type="number" class="stat-input" data-stat="system.stance.current" value="{{this.system.stance.current}}" />
+              <button class="stat-btn plus" data-stat="system.stance.current" data-action="increase"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <label>Stress:</label>
+            <div class="stat-controls">
+              <button class="stat-btn minus" data-stat="system.stress.value" data-action="decrease"><i class="fas fa-minus"></i></button>
+              <input type="number" class="stat-input" data-stat="system.stress.value" value="{{this.system.stress.value}}" min="0" />
+              <button class="stat-btn plus" data-stat="system.stress.value" data-action="increase"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <label>Exhaustion:</label>
+            <div class="stat-controls">
+              <button class="stat-btn minus" data-stat="system.exhaustion.value" data-action="decrease"><i class="fas fa-minus"></i></button>
+              <input type="number" class="stat-input" data-stat="system.exhaustion.value" value="{{this.system.exhaustion.value}}" min="0" />
+              <button class="stat-btn plus" data-stat="system.exhaustion.value" data-action="increase"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+          
+          <div class="stat-row">
+            <label>Fortune:</label>
+            <div class="stat-controls">
+              <button class="stat-btn minus" data-stat="system.fortune.value" data-action="decrease"><i class="fas fa-minus"></i></button>
+              <input type="number" class="stat-input" data-stat="system.fortune.value" value="{{this.system.fortune.value}}" min="0" />
+              <button class="stat-btn plus" data-stat="system.fortune.value" data-action="increase"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    {{#if character}}
+      <div class="wfrp3e-hud-character single" data-actor-id="{{character.id}}">
+        <div class="character-name">{{character.name}}</div>
+        
+        <div class="stat-row">
+          <label>HP:</label>
+          <div class="stat-controls">
+            <button class="stat-btn minus" data-stat="system.wounds.value" data-action="decrease"><i class="fas fa-minus"></i></button>
+            <input type="number" class="stat-input" data-stat="system.wounds.value" value="{{character.system.wounds.value}}" min="0" max="{{character.system.wounds.max}}" />
+            <button class="stat-btn plus" data-stat="system.wounds.value" data-action="increase"><i class="fas fa-plus"></i></button>
+          </div>
+          <span> / {{character.system.wounds.max}}</span>
+        </div>
+
+        <div class="stat-row">
+          <label>Stance:</label>
+          <div class="stat-controls">
+            <button class="stat-btn minus" data-stat="system.stance.current" data-action="decrease"><i class="fas fa-minus"></i></button>
+            <input type="number" class="stat-input" data-stat="system.stance.current" value="{{character.system.stance.current}}" />
+            <button class="stat-btn plus" data-stat="system.stance.current" data-action="increase"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="stat-row">
+          <label>Stress:</label>
+          <div class="stat-controls">
+            <button class="stat-btn minus" data-stat="system.stress.value" data-action="decrease"><i class="fas fa-minus"></i></button>
+            <input type="number" class="stat-input" data-stat="system.stress.value" value="{{character.system.stress.value}}" min="0" />
+            <button class="stat-btn plus" data-stat="system.stress.value" data-action="increase"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="stat-row">
+          <label>Exhaustion:</label>
+          <div class="stat-controls">
+            <button class="stat-btn minus" data-stat="system.exhaustion.value" data-action="decrease"><i class="fas fa-minus"></i></button>
+            <input type="number" class="stat-input" data-stat="system.exhaustion.value" value="{{character.system.exhaustion.value}}" min="0" />
+            <button class="stat-btn plus" data-stat="system.exhaustion.value" data-action="increase"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+        
+        <div class="stat-row">
+          <label>Fortune:</label>
+          <div class="stat-controls">
+            <button class="stat-btn minus" data-stat="system.fortune.value" data-action="decrease"><i class="fas fa-minus"></i></button>
+            <input type="number" class="stat-input" data-stat="system.fortune.value" value="{{character.system.fortune.value}}" min="0" />
+            <button class="stat-btn plus" data-stat="system.fortune.value" data-action="increase"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      <div class="no-character">No character assigned. Please assign a character to your user to use the HUD.</div>
+    {{/if}}
+  {{/if}}
+</div>

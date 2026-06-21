@@ -1,0 +1,122 @@
+#wfrp3e-player-hud {
+  pointer-events: none; /* Let clicks pass through the main container if needed */
+  z-index: 70; /* Above board, below some other UI */
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+#wfrp3e-player-hud .window-content {
+  background: transparent;
+  padding: 0;
+  pointer-events: auto; /* Re-enable clicks for the content */
+  overflow: hidden;
+}
+
+#wfrp3e-player-hud .window-header {
+  display: none; /* Hide standard window header for a true HUD feel, but maybe keep it draggable? Let's keep it but style it minimally in JS or just leave it for dragging. Actually, hiding it means it can't be dragged. Let's just make the window non-transparent if it's a standard app, or we can make a custom HUD. */
+}
+
+/* If we want it to be a normal draggable window, we shouldn't hide the header. Let's style the content instead. */
+
+.wfrp3e-hud-container {
+  background: url('../ui/parchment.jpg') repeat, #e8dcc4; /* Fallback color */
+  background-blend-mode: multiply;
+  border: 2px solid #4a3624;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.8);
+  color: #332211;
+  font-family: "Signika", sans-serif;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.wfrp3e-hud-header h2 {
+  border-bottom: 2px solid #4a3624;
+  margin: 0 0 10px 0;
+  padding-bottom: 5px;
+  text-align: center;
+  font-family: "Modesto Condensed", "Palatino Linotype", serif;
+  font-size: 24px;
+}
+
+.wfrp3e-hud-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.wfrp3e-hud-character {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid #7a5c3f;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+
+.wfrp3e-hud-character.single {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 5px;
+}
+
+.character-name {
+  font-weight: bold;
+  font-size: 18px;
+  border-bottom: 1px solid #7a5c3f;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  text-align: center;
+  font-family: "Modesto Condensed", serif;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.stat-row label {
+  font-weight: bold;
+  flex: 1;
+}
+
+.stat-controls {
+  display: flex;
+  align-items: center;
+}
+
+.stat-btn {
+  background: #4a3624;
+  color: #fff;
+  border: 1px solid #2a1f14;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.stat-btn:hover {
+  background: #7a5c3f;
+  box-shadow: 0 0 5px #7a5c3f;
+}
+
+.stat-input {
+  width: 40px !important;
+  text-align: center;
+  margin: 0 5px;
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid #7a5c3f !important;
+  color: #332211 !important;
+  height: 24px !important;
+}
+
+.no-character {
+  text-align: center;
+  font-style: italic;
+  padding: 20px;
+}
