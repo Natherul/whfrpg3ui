@@ -20,13 +20,11 @@
           </div>
 
           <div class="stat-row stance-row">
-            <label title="Negative is Conservative, Positive is Reckless">Stance:</label>
-            <div class="stat-controls">
-              <span class="stance-label cons" title="Conservative (Negative)">Cons</span>
-              <button class="stat-btn minus" data-stat="system.stance.current" data-action="decrease"><i class="fas fa-minus"></i></button>
-              <input type="number" class="stat-input stance-input" data-stat="system.stance.current" value="{{this.system.stance.current}}" />
-              <button class="stat-btn plus" data-stat="system.stance.current" data-action="increase"><i class="fas fa-plus"></i></button>
-              <span class="stance-label reck" title="Reckless (Positive)">Reck</span>
+            <label title="Stance Level">Stance:</label>
+            <div class="stat-controls stance-controls">
+              <button class="stat-btn stance-btn cons-btn" data-stat="system.stance.current" data-action="decrease" title="Make more Conservative">Cons</button>
+              <input type="number" class="stat-input stance-input {{stanceColorClass this.system.stance.current}}" data-stat="system.stance.current" value="{{abs this.system.stance.current}}" min="0" />
+              <button class="stat-btn stance-btn reck-btn" data-stat="system.stance.current" data-action="increase" title="Make more Reckless">Reck</button>
             </div>
           </div>
 
@@ -75,13 +73,11 @@
         </div>
 
         <div class="stat-row stance-row">
-          <label title="Negative is Conservative, Positive is Reckless">Stance:</label>
-          <div class="stat-controls">
-            <span class="stance-label cons" title="Conservative (Negative)">Cons</span>
-            <button class="stat-btn minus" data-stat="system.stance.current" data-action="decrease"><i class="fas fa-minus"></i></button>
-            <input type="number" class="stat-input stance-input" data-stat="system.stance.current" value="{{character.system.stance.current}}" />
-            <button class="stat-btn plus" data-stat="system.stance.current" data-action="increase"><i class="fas fa-plus"></i></button>
-            <span class="stance-label reck" title="Reckless (Positive)">Reck</span>
+          <label title="Stance Level">Stance:</label>
+          <div class="stat-controls stance-controls">
+            <button class="stat-btn stance-btn cons-btn" data-stat="system.stance.current" data-action="decrease" title="Make more Conservative">Cons</button>
+            <input type="number" class="stat-input stance-input {{stanceColorClass character.system.stance.current}}" data-stat="system.stance.current" value="{{abs character.system.stance.current}}" min="0" />
+            <button class="stat-btn stance-btn reck-btn" data-stat="system.stance.current" data-action="increase" title="Make more Reckless">Reck</button>
           </div>
         </div>
 

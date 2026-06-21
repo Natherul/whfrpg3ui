@@ -117,23 +117,42 @@
   padding: 20px;
 }
 
-.stance-label {
+.stance-btn {
   font-size: 11px;
   font-weight: bold;
   padding: 2px 4px;
   border-radius: 3px;
   text-transform: uppercase;
   color: white;
+  border: 1px solid rgba(0,0,0,0.5);
+  cursor: pointer;
+  flex: 0 0 auto;
 }
 
-.stance-label.cons {
+.stance-btn.cons-btn {
   background-color: #2d6a4f; /* Green */
   margin-right: 4px;
 }
 
-.stance-label.reck {
+.stance-btn.reck-btn {
   background-color: #9d0208; /* Red */
   margin-left: 4px;
+}
+
+.stance-input.cons-stance {
+  background-color: rgba(45, 106, 79, 0.3) !important;
+  color: #1b4332 !important;
+  font-weight: bold;
+}
+
+.stance-input.reck-stance {
+  background-color: rgba(157, 2, 8, 0.3) !important;
+  color: #6a040f !important;
+  font-weight: bold;
+}
+
+.stance-input.neutral-stance {
+  background-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 #wfrp3e-player-hud .header-button.close {

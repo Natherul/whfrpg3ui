@@ -108,6 +108,16 @@ class WFRP3eHUD extends Application {
 
       if (!actor) return;
 
+      // Preserve stance polarity since the UI only shows positive numbers
+      if (input.classList.contains('stance-input')) {
+        let currentStance = foundry.utils.getProperty(actor, statPath) || 0;
+        if (currentStance < 0) {
+          value = -Math.abs(value);
+        } else {
+          value = Math.abs(value);
+        }
+      }
+
       await actor.update({ [statPath]: value });
     });
   }
@@ -163,4 +173,15 @@ Hooks.on('getSceneControlButtons', (controls) => {
       button: true
     });
   }
+});
+
+Hooks.once('init', () => {
+  Handlebars.registerHelper('abs', function(num) {
+    return Math.abs(num || 0);
+  });
+  Handlebars.registerHelper('stanceColorClass', function(num) {
+    if (num < 0) return "cons-stance";
+    if (num > 0) return "reck-stance";
+    return "neutral-stance";
+  });
 });
