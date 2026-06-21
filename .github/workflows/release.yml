@@ -66,7 +66,7 @@ jobs:
       - name: Create Zip Archive
         run: |
           # Zip all the module files, excluding development files like .github
-          zip -r module.zip module.json scripts templates styles
+          zip -r module.zip module.json scripts templates styles lang
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

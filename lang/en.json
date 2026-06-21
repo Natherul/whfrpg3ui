@@ -1,0 +1,12 @@
+{
+  "WFRP3eHUD": {
+    "Title": "WFRP3e HUD",
+    "PartyHUD": "Party HUD",
+    "HP": "HP:",
+    "Stance": "Stance:",
+    "Stress": "Stress:",
+    "Exhaustion": "Exhaustion:",
+    "Fortune": "Fortune:",
+    "NoCharacter": "No character assigned. Please assign a character to your user to use the HUD."
+  }
+}
