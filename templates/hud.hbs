@@ -22,9 +22,9 @@
           <div class="stat-row stance-row">
             <label title="Stance Level">Stance:</label>
             <div class="stat-controls stance-controls">
-              <button class="stat-btn stance-btn cons-btn" data-stat="system.stance.current" data-action="decrease" title="Make more Conservative">Cons</button>
+              <a class="stat-btn stance-btn cons-btn" data-stat="system.stance.current" data-action="decrease" title="Make more Conservative">Cons</a>
               <input type="number" class="stat-input stance-input {{stanceColorClass this.system.stance.current}}" data-stat="system.stance.current" value="{{abs this.system.stance.current}}" min="0" />
-              <button class="stat-btn stance-btn reck-btn" data-stat="system.stance.current" data-action="increase" title="Make more Reckless">Reck</button>
+              <a class="stat-btn stance-btn reck-btn" data-stat="system.stance.current" data-action="increase" title="Make more Reckless">Reck</a>
             </div>
           </div>
 
@@ -75,9 +75,9 @@
         <div class="stat-row stance-row">
           <label title="Stance Level">Stance:</label>
           <div class="stat-controls stance-controls">
-            <button class="stat-btn stance-btn cons-btn" data-stat="system.stance.current" data-action="decrease" title="Make more Conservative">Cons</button>
+            <a class="stat-btn stance-btn cons-btn" data-stat="system.stance.current" data-action="decrease" title="Make more Conservative">Cons</a>
             <input type="number" class="stat-input stance-input {{stanceColorClass character.system.stance.current}}" data-stat="system.stance.current" value="{{abs character.system.stance.current}}" min="0" />
-            <button class="stat-btn stance-btn reck-btn" data-stat="system.stance.current" data-action="increase" title="Make more Reckless">Reck</button>
+            <a class="stat-btn stance-btn reck-btn" data-stat="system.stance.current" data-action="increase" title="Make more Reckless">Reck</a>
           </div>
         </div>
 
