@@ -18,12 +18,14 @@
             <span> / {{this.system.wounds.max}}</span>
           </div>
 
-          <div class="stat-row">
-            <label>Stance:</label>
+          <div class="stat-row stance-row">
+            <label title="Negative is Conservative, Positive is Reckless">Stance:</label>
             <div class="stat-controls">
+              <span class="stance-label cons" title="Conservative (Negative)">Cons</span>
               <button class="stat-btn minus" data-stat="system.stance.current" data-action="decrease"><i class="fas fa-minus"></i></button>
-              <input type="number" class="stat-input" data-stat="system.stance.current" value="{{this.system.stance.current}}" />
+              <input type="number" class="stat-input stance-input" data-stat="system.stance.current" value="{{this.system.stance.current}}" />
               <button class="stat-btn plus" data-stat="system.stance.current" data-action="increase"><i class="fas fa-plus"></i></button>
+              <span class="stance-label reck" title="Reckless (Positive)">Reck</span>
             </div>
           </div>
 
@@ -37,11 +39,11 @@
           </div>
 
           <div class="stat-row">
-            <label>Exhaustion:</label>
+            <label>Fatigue:</label>
             <div class="stat-controls">
-              <button class="stat-btn minus" data-stat="system.exhaustion.value" data-action="decrease"><i class="fas fa-minus"></i></button>
-              <input type="number" class="stat-input" data-stat="system.exhaustion.value" value="{{this.system.exhaustion.value}}" min="0" />
-              <button class="stat-btn plus" data-stat="system.exhaustion.value" data-action="increase"><i class="fas fa-plus"></i></button>
+              <button class="stat-btn minus" data-stat="system.fatigue.value" data-action="decrease"><i class="fas fa-minus"></i></button>
+              <input type="number" class="stat-input" data-stat="system.fatigue.value" value="{{this.system.fatigue.value}}" min="0" />
+              <button class="stat-btn plus" data-stat="system.fatigue.value" data-action="increase"><i class="fas fa-plus"></i></button>
             </div>
           </div>
           
@@ -71,12 +73,14 @@
           <span> / {{character.system.wounds.max}}</span>
         </div>
 
-        <div class="stat-row">
-          <label>Stance:</label>
+        <div class="stat-row stance-row">
+          <label title="Negative is Conservative, Positive is Reckless">Stance:</label>
           <div class="stat-controls">
+            <span class="stance-label cons" title="Conservative (Negative)">Cons</span>
             <button class="stat-btn minus" data-stat="system.stance.current" data-action="decrease"><i class="fas fa-minus"></i></button>
-            <input type="number" class="stat-input" data-stat="system.stance.current" value="{{character.system.stance.current}}" />
+            <input type="number" class="stat-input stance-input" data-stat="system.stance.current" value="{{character.system.stance.current}}" />
             <button class="stat-btn plus" data-stat="system.stance.current" data-action="increase"><i class="fas fa-plus"></i></button>
+            <span class="stance-label reck" title="Reckless (Positive)">Reck</span>
           </div>
         </div>
 
@@ -90,11 +94,11 @@
         </div>
 
         <div class="stat-row">
-          <label>Exhaustion:</label>
+          <label>Fatigue:</label>
           <div class="stat-controls">
-            <button class="stat-btn minus" data-stat="system.exhaustion.value" data-action="decrease"><i class="fas fa-minus"></i></button>
-            <input type="number" class="stat-input" data-stat="system.exhaustion.value" value="{{character.system.exhaustion.value}}" min="0" />
-            <button class="stat-btn plus" data-stat="system.exhaustion.value" data-action="increase"><i class="fas fa-plus"></i></button>
+            <button class="stat-btn minus" data-stat="system.fatigue.value" data-action="decrease"><i class="fas fa-minus"></i></button>
+            <input type="number" class="stat-input" data-stat="system.fatigue.value" value="{{character.system.fatigue.value}}" min="0" />
+            <button class="stat-btn plus" data-stat="system.fatigue.value" data-action="increase"><i class="fas fa-plus"></i></button>
           </div>
         </div>
         

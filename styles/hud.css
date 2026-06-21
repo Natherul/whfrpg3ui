@@ -1,23 +1,19 @@
-#wfrp3e-player-hud {
-  pointer-events: none; /* Let clicks pass through the main container if needed */
-  z-index: 70; /* Above board, below some other UI */
-  background: transparent;
-  box-shadow: none;
-  border: none;
-}
-
-#wfrp3e-player-hud .window-content {
-  background: transparent;
-  padding: 0;
-  pointer-events: auto; /* Re-enable clicks for the content */
-  overflow: hidden;
-}
-
 #wfrp3e-player-hud .window-header {
-  display: none; /* Hide standard window header for a true HUD feel, but maybe keep it draggable? Let's keep it but style it minimally in JS or just leave it for dragging. Actually, hiding it means it can't be dragged. Let's just make the window non-transparent if it's a standard app, or we can make a custom HUD. */
+  /* Keep standard window header visible so it can be dragged, but style it slightly to match */
+  background: rgba(74, 54, 36, 0.9);
+  border-bottom: 1px solid #2a1f14;
+  border-radius: 5px 5px 0 0;
+  color: #e8dcc4;
 }
 
-/* If we want it to be a normal draggable window, we shouldn't hide the header. Let's style the content instead. */
+/* Ensure the window itself can capture drag events */
+#wfrp3e-player-hud {
+  z-index: 70;
+  background: transparent;
+  box-shadow: 0 0 10px rgba(0,0,0,0.8);
+  border: none;
+  border-radius: 5px;
+}
 
 .wfrp3e-hud-container {
   background: url('../ui/parchment.jpg') repeat, #e8dcc4; /* Fallback color */
@@ -119,4 +115,23 @@
   text-align: center;
   font-style: italic;
   padding: 20px;
+}
+
+.stance-label {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 4px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.stance-label.cons {
+  background-color: #2d6a4f; /* Green */
+  margin-right: 4px;
+}
+
+.stance-label.reck {
+  background-color: #9d0208; /* Red */
+  margin-left: 4px;
 }

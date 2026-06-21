@@ -18,6 +18,19 @@ class WFRP3eHUD extends Application {
     });
   }
 
+  async _render(force, options) {
+    await super._render(force, options);
+    
+    // Set a default position at bottom left if it hasn't been moved/saved
+    // We check if it's currently at the default center position or missing
+    if (!this.position.left || this.position.left === (window.innerWidth - this.position.width) / 2) {
+      this.setPosition({
+        left: 15,
+        top: window.innerHeight - this.element.height() - 80
+      });
+    }
+  }
+
   getData() {
     const isGM = game.user.isGM;
     let characters = [];
