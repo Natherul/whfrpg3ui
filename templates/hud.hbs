@@ -54,6 +54,26 @@
               <button class="stat-btn plus" data-stat="system.fortune.value" data-action="increase"><i class="fas fa-plus"></i></button>
             </div>
           </div>
+          {{#if this.system.wizard}}
+          <div class="stat-row">
+            <label>Power:</label>
+            <div class="stat-controls">
+              <button class="stat-btn minus" data-stat="system.power" data-action="decrease"><i class="fas fa-minus"></i></button>
+              <input type="number" class="stat-input" data-stat="system.power" value="{{this.system.power}}" min="0" />
+              <button class="stat-btn plus" data-stat="system.power" data-action="increase"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+          {{/if}}
+          {{#if this.system.priest}}
+          <div class="stat-row">
+            <label>Favor:</label>
+            <div class="stat-controls">
+              <button class="stat-btn minus" data-stat="system.favour" data-action="decrease"><i class="fas fa-minus"></i></button>
+              <input type="number" class="stat-input" data-stat="system.favour" value="{{this.system.favour}}" min="0" />
+              <button class="stat-btn plus" data-stat="system.favour" data-action="increase"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+          {{/if}}
         </div>
       {{/each}}
     </div>
@@ -107,6 +127,26 @@
             <button class="stat-btn plus" data-stat="system.fortune.value" data-action="increase"><i class="fas fa-plus"></i></button>
           </div>
         </div>
+        {{#if character.system.wizard}}
+        <div class="stat-row">
+          <label>Power:</label>
+          <div class="stat-controls">
+            <button class="stat-btn minus" data-stat="system.power" data-action="decrease"><i class="fas fa-minus"></i></button>
+            <input type="number" class="stat-input" data-stat="system.power" value="{{character.system.power}}" min="0" />
+            <button class="stat-btn plus" data-stat="system.power" data-action="increase"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+        {{/if}}
+        {{#if character.system.priest}}
+        <div class="stat-row">
+          <label>Favor:</label>
+          <div class="stat-controls">
+            <button class="stat-btn minus" data-stat="system.favour" data-action="decrease"><i class="fas fa-minus"></i></button>
+            <input type="number" class="stat-input" data-stat="system.favour" value="{{character.system.favour}}" min="0" />
+            <button class="stat-btn plus" data-stat="system.favour" data-action="increase"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+        {{/if}}
       </div>
     {{else}}
       <div class="no-character">No character assigned. Please assign a character to your user to use the HUD.</div>
