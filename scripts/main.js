@@ -170,6 +170,14 @@ Hooks.on('getSceneControlButtons', (controls) => {
           window.wfrp3eHUD.render(true);
         }
       },
+      onChange: () => {
+        if (window.wfrp3eHUD) {
+          window.wfrp3eHUD.render(true);
+        } else {
+          window.wfrp3eHUD = new WFRP3eHUD();
+          window.wfrp3eHUD.render(true);
+        }
+      },
       button: true
     });
   }
