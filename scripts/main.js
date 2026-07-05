@@ -166,8 +166,16 @@ Hooks.once('ready', () => {
 
 // Add a button to the token controls to reopen the HUD if closed
 Hooks.on('getSceneControlButtons', (controls) => {
-  const tokenControls = controls.find(c => c.name === 'token');
-  if (tokenControls) {
+  let tokenControls;
+  if (Array.isArray(controls) || (controls && typeof controls.find === 'function')) {
+    tokenControls = controls.find(c => c.name === 'token');
+  } else if (controls && controls.token) {
+    tokenControls = controls.token; // In case it's an object mapped by name
+  } else if (controls && typeof controls === 'object') {
+    tokenControls = Object.values(controls).find(c => c && c.name === 'token');
+  }
+
+  if (tokenControls && tokenControls.tools) {
     tokenControls.tools.push({
       name: 'wfrp3eHUD',
       title: 'Open WFRP3e HUD',
