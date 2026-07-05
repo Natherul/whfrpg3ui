@@ -22,6 +22,14 @@ class WFRP3eHUD extends Application {
   async _render(force, options) {
     await super._render(force, options);
     
+    // Remove from ui.windows so Escape doesn't close it (allowing token deselection)
+    delete ui.windows[this.appId];
+
+    // Ensure the hook is registered (in case it was closed and reopened)
+    if (!this.hookId) {
+      this.hookId = Hooks.on("updateActor", this._onActorUpdate.bind(this));
+    }
+    
     // Set a default position at bottom left if it hasn't been moved/saved
     // We check if it's currently at the default center position or missing
     if (!this.position.left || this.position.left === (window.innerWidth - this.position.width) / 2) {
@@ -138,7 +146,10 @@ class WFRP3eHUD extends Application {
   }
 
   close(options) {
-    Hooks.off("updateActor", this.hookId);
+    if (this.hookId) {
+      Hooks.off("updateActor", this.hookId);
+      this.hookId = null;
+    }
     return super.close(options);
   }
 }
@@ -161,16 +172,8 @@ Hooks.on('getSceneControlButtons', (controls) => {
       name: 'wfrp3eHUD',
       title: 'Open WFRP3e HUD',
       icon: 'fas fa-id-card',
-      visible: game.user.isGM || !!game.user.character,
+      visible: true,
       onClick: () => {
-        if (window.wfrp3eHUD) {
-          window.wfrp3eHUD.render(true);
-        } else {
-          window.wfrp3eHUD = new WFRP3eHUD();
-          window.wfrp3eHUD.render(true);
-        }
-      },
-      onChange: () => {
         if (window.wfrp3eHUD) {
           window.wfrp3eHUD.render(true);
         } else {
