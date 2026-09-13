@@ -1,67 +1,50 @@
-class WFRP3eHUD extends Application {
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications?.api ?? { ApplicationV2: Application, HandlebarsApplicationMixin: (a) => a };
+
+class WFRP3eHUD extends HandlebarsApplicationMixin(ApplicationV2) {
   constructor(options = {}) {
+    options.position = options.position || {};
+    options.position.width = options.position.width ?? (game?.user?.isGM ? 600 : 300);
     super(options);
-    this.hookId = Hooks.on("updateActor", this._onActorUpdate.bind(this));
+    this.hookId = null;
   }
 
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      id: "wfrp3e-player-hud",
+  static DEFAULT_OPTIONS = {
+    id: "wfrp3e-player-hud",
+    window: {
       title: "WFRP3e HUD",
-      template: "modules/wfrp3e-player-hud/templates/hud.hbs",
-      popOut: true,
-      width: game.user.isGM ? 600 : 300,
-      height: "auto",
       resizable: true,
       minimizable: true,
-      closable: false,
-      classes: ["wfrp3e-hud-app"]
-    });
-  }
+      closable: false
+    },
+    position: {
+      height: "auto"
+    },
+    classes: ["wfrp3e-hud-app"]
+  };
 
-  async _render(force, options) {
-    await super._render(force, options);
-    
-    // Remove from ui.windows so Escape doesn't close it (allowing token deselection)
-    delete ui.windows[this.appId];
-
-    // Ensure the hook is registered (in case it was closed and reopened)
-    if (!this.hookId) {
-      this.hookId = Hooks.on("updateActor", this._onActorUpdate.bind(this));
+  static PARTS = {
+    hud: {
+      template: "modules/wfrp3e-player-hud/templates/hud.hbs"
     }
+  };
+
+  _onFirstRender(context, options) {
+    super._onFirstRender(context, options);
     
     // Set a default position at bottom left if it hasn't been moved/saved
-    // We check if it's currently at the default center position or missing
     if (!this.position.left || this.position.left === (window.innerWidth - this.position.width) / 2) {
       this.setPosition({
         left: 15,
-        top: window.innerHeight - this.element.height() - 80
+        top: window.innerHeight - this.element.offsetHeight - 80
       });
     }
+
+    this.hookId = Hooks.on("updateActor", this._onActorUpdate.bind(this));
   }
 
-  getData() {
-    const isGM = game.user.isGM;
-    let characters = [];
-    let character = null;
-
-    if (isGM) {
-      // GM sees all player characters
-      characters = game.actors.filter(a => a.hasPlayerOwner && a.type === "character");
-    } else {
-      // Player sees their assigned character
-      character = game.user.character;
-    }
-
-    return {
-      isGM,
-      characters,
-      character
-    };
-  }
-
-  activateListeners(html) {
-    super.activateListeners(html);
+  _onRender(context, options) {
+    super._onRender(context, options);
+    const html = $(this.element);
 
     // Handle Add XP button
     html.find('.add-xp-btn').click(async (event) => {
@@ -130,17 +113,37 @@ class WFRP3eHUD extends Application {
     });
   }
 
+  async _prepareContext(options) {
+    const isGM = game.user.isGM;
+    let characters = [];
+    let character = null;
+
+    if (isGM) {
+      // GM sees all player characters
+      characters = game.actors.filter(a => a.hasPlayerOwner && a.type === "character");
+    } else {
+      // Player sees their assigned character
+      character = game.user.character;
+    }
+
+    return {
+      isGM,
+      characters,
+      character
+    };
+  }
+
   _onActorUpdate(actor, data, options, userId) {
     // Only re-render if it's a character we care about
     if (actor.type !== "character") return;
     
     if (game.user.isGM) {
       if (actor.hasPlayerOwner) {
-        this.render(false);
+        this.render({ force: false });
       }
     } else {
       if (game.user.character && actor.id === game.user.character.id) {
-        this.render(false);
+        this.render({ force: false });
       }
     }
   }
@@ -158,7 +161,7 @@ Hooks.once('ready', () => {
   // Only show for users who have a character, or GMs
   if (game.user.isGM || game.user.character) {
     window.wfrp3eHUD = new WFRP3eHUD();
-    window.wfrp3eHUD.render(true);
+    window.wfrp3eHUD.render({ force: true });
   } else {
     ui.notifications.warn("WFRP3e HUD: No character assigned to your user.");
   }
@@ -183,10 +186,10 @@ Hooks.on('getSceneControlButtons', (controls) => {
       visible: true,
       onClick: () => {
         if (window.wfrp3eHUD) {
-          window.wfrp3eHUD.render(true);
+          window.wfrp3eHUD.render({ force: true });
         } else {
           window.wfrp3eHUD = new WFRP3eHUD();
-          window.wfrp3eHUD.render(true);
+          window.wfrp3eHUD.render({ force: true });
         }
       },
       button: true
